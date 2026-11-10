@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f6f9;
+  --foreground: #0b2545;
+
+  --card: #ffffff;
+  --card-foreground: #0b2545;
+
+  --popover: #ffffff;
+  --popover-foreground: #0b2545;
+
+  --primary: #0b2545;
+  --primary-foreground: #ffffff;
+
+  --secondary: #e8edf5;
+  --secondary-foreground: #0b2545;
+
+  --muted: #eef1f6;
+  --muted-foreground: #5a6a80;
+
+  --accent: #1f6feb;
+  --accent-foreground: #ffffff;
+
+  --destructive: #d64545;
+  --destructive-foreground: #ffffff;
+
+  --border: #dde4ee;
+  --input: #cfd8e6;
+  --ring: #1f6feb;
+
+  --radius: 0.75rem;
+
+  /* Institucional */
+  --emi-navy: #0b2545;
+  --emi-navy-dark: #071a33;
+  --emi-blue: #1f6feb;
+  --emi-gold: #c9a227;
+
+  /* Sentimiento: usar SIEMPRE estos valores en toda la app */
+  --sentiment-positive: #2e9e6b;
+  --sentiment-neutral: #e0a100;
+  --sentiment-negative: #d64545;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+/* Botón primario azul marino */
+.emi-btn-primary {
+  background-color: var(--emi-navy);
+  color: #ffffff;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.emi-btn-primary:hover {
+  background-color: var(--emi-blue);
+}
+
+/* Tarjetas institucionales */
+.emi-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(11, 37, 69, 0.08), 0 8px 24px rgba(11, 37, 69, 0.06);
+  border: 1px solid #e8edf5;
+}
+
+/* Ítem del sidebar: activo con acento dorado */
+.sidebar-item {
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+.sidebar-item.active {
+  background-color: rgba(31, 111, 235, 0.18);
+  border-left-color: var(--emi-gold);
+  color: #ffffff;
+}
+.sidebar-item:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* Tabla con hover */
+.emi-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+.emi-table tbody tr:hover {
+  background-color: #f4f6f9;
+}
+
+/* Skeleton de carga */
+@keyframes emi-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.emi-skeleton {
+  background: linear-gradient(90deg, #e6eaf2 25%, #f2f5fa 50%, #e6eaf2 75%);
+  background-size: 200% 100%;
+  animation: emi-pulse 1.4s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+/* Estado vacío */
+.emi-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+
+/* Toasts */
+.toast-success { border-left: 4px solid var(--sentiment-positive); }
+.toast-error { border-left: 4px solid var(--sentiment-negative); }
+
+/* Fondo de login */
+.login-gradient {
+  background: linear-gradient(135deg, #071a33 0%, #0b2545 50%, #123a6b 100%);
+}
