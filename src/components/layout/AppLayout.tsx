@@ -13,6 +13,7 @@ import {
   Search,
   FileBarChart,
   History,
+  FileText,
   LogOut,
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -71,6 +72,12 @@ const GRUPOS: { titulo: string; items: MenuItem[] }[] = [
   {
     titulo: 'Informes y Reportes',
     items: [
+      {
+        href: '/informes',
+        etiqueta: 'Inicio informes',
+        icono: FileText,
+        roles: ['superadministrador', 'administrador', 'usuario'],
+      },
       {
         href: '/dashboard',
         etiqueta: 'Dashboard',
@@ -156,7 +163,10 @@ function SidebarContent() {
                 {grupo.titulo}
               </p>
               {items.map((item) => {
-                const activo = pathname.startsWith(item.href);
+                const activo =
+                  item.href === '/informes'
+                    ? pathname === '/informes'
+                    : pathname.startsWith(item.href);
                 const Icono = item.icono;
                 return (
                   <Link
